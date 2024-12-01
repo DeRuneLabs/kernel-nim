@@ -34,7 +34,7 @@ task "clean", "remove build file":
 
 task "build", "build kernel":
   echo "compile"
-  direShell "nim c -d:release --nimcache:nimcache --gcc:$1 main.nim" % CC
+  direShell "nim c -d:release --nimcache:nimcache --gcc.exe:$1 main.nim" % CC
   echo "linking"
   direShell CC, "-T linker.ld -o main.bin -ffreestanding -O2 -nostdlib boot.o nimcache/@mmain.nim.c.o nimcache/stdlib_system.nim.c.o nimcache/@mioutils.nim.c.o -lgcc"
 
